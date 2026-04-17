@@ -16,12 +16,27 @@
 // console.log(result); // 425
 
 
-// Task 01///////////////////
-function totalFine(fare) {
-    if (typeof fare !== "number" || fare <= 0) {
-        return 'Invalid';
+// // Task 01///////////////////
+// function totalFine(fare) {
+//     if (typeof fare !== "number" || fare <= 0) {
+//         return 'Invalid';
+//     }
+//     const result = fare + (fare * 20 / 100) + 30;
+//     return result;
+// }
+// console.log(totalFine(200));
+
+
+function onlyCharacter(str) {
+    // validation
+    if (typeof str !== "string") {
+        return "Invalid";
     }
-    const result = fare + (fare * 20 / 100) + 30;
+
+    // remove spaces + uppercase
+    let result = str.split(" ").join("").toUpperCase();
+
     return result;
 }
-console.log(totalFine(200));
+const result = onlyCharacter('Hello we have a plain');
+console.log(result);
