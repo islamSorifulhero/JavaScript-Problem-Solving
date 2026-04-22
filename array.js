@@ -31,16 +31,51 @@
 // ); // Karim
 
 
-function removeDuplicate(arr) {
-    if (!Array.isArray(arr)) {
+// function removeDuplicate(arr) {
+//     if (!Array.isArray(arr)) {
+//         return "Invalid"
+//     }
+//     let unique = [];
+//     for (let num of arr) {
+//         if (!unique.includes(num)) {
+//             unique.push(num)
+//         }
+//     }
+//     return unique;
+// }
+// console.log(removeDuplicate([1, 2, 2, 3, 4, 4, 5]));
+
+
+
+// Problem: Password Validator
+function isValidPassword(password) {
+    if (typeof password !== "string") {
+        return "Invalid";
+    }
+    if (password.length < 8) {
         return "Invalid"
     }
-    let unique = [];
-    for (let num of arr) {
-        if (!unique.includes(num)) {
-            unique.push(num)
+    let hasUpper = false;
+    let hasLower = false;
+    let hasNumber = false;
+
+    for (let char of password) {
+        if (char >= 'A' && char <= "Z") {
+            hasUpper = true;
+        }
+        else if (char >= 'a' && char <= 'z') {
+            hasLower = true;
+        }
+        else if (char >= '0' && char <= '9') {
+            hasNumber = true;
         }
     }
-    return unique;
+    if (hasUpper && hasLower && hasNumber) {
+        return 'Valid';
+    }
+    else {
+        return "Invalid";
+    }
 }
-console.log(removeDuplicate([1, 2, 2, 3, 4, 4, 5]));
+console.log(isValidPassword("Pass1234"));
+console.log(isValidPassword('password'));
