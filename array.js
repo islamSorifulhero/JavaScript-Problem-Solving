@@ -81,27 +81,47 @@
 // console.log(isValidPassword('password'));
 
 
-function cartTotal(cart) {
+// function cartTotal(cart) {
+//     // validation
+//     if (!Array.isArray(cart)) {
+//         return "Invalid";
+//     }
+
+//     let total = 0;
+
+//     for (let item of cart) {
+//         if (typeof item.price !== "number" || typeof item.quantity !== "number") {
+//             return "Invalid";
+//         }
+
+//         total += item.price * item.quantity;
+//     }
+
+//     return total;
+// }
+// console.log(
+//   cartTotal([
+//     { name: "Shirt", price: 500, quantity: 2 },
+//     { name: "Pant", price: 1000, quantity: 1 }
+//   ])
+// ); // 2000
+
+
+function longestWord(sentence) {
     // validation
-    if (!Array.isArray(cart)) {
+    if (typeof sentence !== "string") {
         return "Invalid";
     }
 
-    let total = 0;
+    let words = sentence.split(" ");
+    let longest = "";
 
-    for (let item of cart) {
-        if (typeof item.price !== "number" || typeof item.quantity !== "number") {
-            return "Invalid";
+    for (let word of words) {
+        if (word.length > longest.length) {
+            longest = word;
         }
-
-        total += item.price * item.quantity;
     }
 
-    return total;
+    return longest;
 }
-console.log(
-  cartTotal([
-    { name: "Shirt", price: 500, quantity: 2 },
-    { name: "Pant", price: 1000, quantity: 1 }
-  ])
-); // 2000
+console.log(longestWord("I am learning programming")); // programming
