@@ -107,21 +107,49 @@
 // ); // 2000
 
 
-function longestWord(sentence) {
+// function longestWord(sentence) {
+//     // validation
+//     if (typeof sentence !== "string") {
+//         return "Invalid";
+//     }
+
+//     let words = sentence.split(" ");
+//     let longest = "";
+
+//     for (let word of words) {
+//         if (word.length > longest.length) {
+//             longest = word;
+//         }
+//     }
+
+//     return longest;
+// }
+// console.log(longestWord("I am learning programming")); // programming
+
+
+function majorityElement(arr) {
     // validation
-    if (typeof sentence !== "string") {
+    if (!Array.isArray(arr)) {
         return "Invalid";
     }
 
-    let words = sentence.split(" ");
-    let longest = "";
+    let countMap = {};
 
-    for (let word of words) {
-        if (word.length > longest.length) {
-            longest = word;
+    // count frequency
+    for (let num of arr) {
+        countMap[num] = (countMap[num] || 0) + 1;
+    }
+
+    let n = arr.length;
+
+    // check majority
+    for (let key in countMap) {
+        if (countMap[key] > n / 2) {
+            return Number(key);
         }
     }
 
-    return longest;
+    return "No Majority";
 }
-console.log(longestWord("I am learning programming")); // programming
+console.log(majorityElement([2, 2, 1, 2, 3])); // 2
+console.log(majorityElement([1, 2, 3, 4]));    // No Majority
