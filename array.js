@@ -127,29 +127,56 @@
 // console.log(longestWord("I am learning programming")); // programming
 
 
-function majorityElement(arr) {
+// function majorityElement(arr) {
+//     // validation
+//     if (!Array.isArray(arr)) {
+//         return "Invalid";
+//     }
+
+//     let countMap = {};
+
+//     // count frequency
+//     for (let num of arr) {
+//         countMap[num] = (countMap[num] || 0) + 1;
+//     }
+
+//     let n = arr.length;
+
+//     // check majority
+//     for (let key in countMap) {
+//         if (countMap[key] > n / 2) {
+//             return Number(key);
+//         }
+//     }
+
+//     return "No Majority";
+// }
+// console.log(majorityElement([2, 2, 1, 2, 3])); // 2
+// console.log(majorityElement([1, 2, 3, 4]));    // No Majority
+
+
+
+
+function twoSum(arr, target) {
     // validation
     if (!Array.isArray(arr)) {
         return "Invalid";
     }
 
-    let countMap = {};
+    let map = {};
 
-    // count frequency
-    for (let num of arr) {
-        countMap[num] = (countMap[num] || 0) + 1;
-    }
+    for (let i = 0; i < arr.length; i++) {
+        let needed = target - arr[i];
 
-    let n = arr.length;
-
-    // check majority
-    for (let key in countMap) {
-        if (countMap[key] > n / 2) {
-            return Number(key);
+        if (map[needed] !== undefined) {
+            return [map[needed], i];
         }
+
+        map[arr[i]] = i;
     }
 
-    return "No Majority";
+    return "Not Found";
 }
-console.log(majorityElement([2, 2, 1, 2, 3])); // 2
-console.log(majorityElement([1, 2, 3, 4]));    // No Majority
+
+console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+console.log(twoSum([1, 2, 3], 7)); // Not FoundF
