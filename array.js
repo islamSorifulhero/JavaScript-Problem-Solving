@@ -157,26 +157,54 @@
 
 
 
-function twoSum(arr, target) {
+// function twoSum(arr, target) {
+//     // validation
+//     if (!Array.isArray(arr)) {
+//         return "Invalid";
+//     }
+
+//     let map = {};
+
+//     for (let i = 0; i < arr.length; i++) {
+//         let needed = target - arr[i];
+
+//         if (map[needed] !== undefined) {
+//             return [map[needed], i];
+//         }
+
+//         map[arr[i]] = i;
+//     }
+
+//     return "Not Found";
+// }
+
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(twoSum([1, 2, 3], 7)); // Not FoundF
+
+function diagonalSum(matrix) {
     // validation
-    if (!Array.isArray(arr)) {
+    if (!Array.isArray(matrix)) {
         return "Invalid";
     }
 
-    let map = {};
+    let n = matrix.length;
 
-    for (let i = 0; i < arr.length; i++) {
-        let needed = target - arr[i];
-
-        if (map[needed] !== undefined) {
-            return [map[needed], i];
+    for (let row of matrix) {
+        if (!Array.isArray(row) || row.length !== n) {
+            return "Invalid";
         }
-
-        map[arr[i]] = i;
     }
 
-    return "Not Found";
-}
+    let sum = 0;
 
-console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
-console.log(twoSum([1, 2, 3], 7)); // Not FoundF
+    for (let i = 0; i < n; i++) {
+        sum += matrix[i][i];
+    }
+
+    return sum;
+}
+console.log(diagonalSum([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+])); // 15
