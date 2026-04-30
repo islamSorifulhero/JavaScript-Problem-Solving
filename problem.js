@@ -46,16 +46,42 @@
 // console.log(getRandomNumber());
 
 
-//5555555555///////
-function lowest(numbers) {
-    let min = numbers[0];
+// //5555555555///////
+// function lowest(numbers) {
+//     let min = numbers[0];
 
-    for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] < min) {
-            min = numbers[i];
-        }
+//     for (let i = 1; i < numbers.length; i++) {
+//         if (numbers[i] < min) {
+//             min = numbers[i];
+//         }
+//     }
+//     return min;
+// }
+// const heights = [212, 312, 143, 54, 243, 122, 133, 422, 333, 233];
+// console.log(lowest(heights));
+
+
+function isAnagram(str1, str2) {
+    // validation
+    if (typeof str1 !== "string" || typeof str2 !== "string") {
+        return "Invalid";
     }
-    return min;
+
+    // clean করা (lowercase + space remove)
+    let s1 = str1.toLowerCase().replace(/\s/g, "");
+    let s2 = str2.toLowerCase().replace(/\s/g, "");
+
+    // length check
+    if (s1.length !== s2.length) {
+        return false;
+    }
+
+    // sort করে compare
+    let sorted1 = s1.split("").sort().join("");
+    let sorted2 = s2.split("").sort().join("");
+
+    return sorted1 === sorted2;
 }
-const heights = [212, 312, 143, 54, 243, 122, 133, 422, 333, 233];
-console.log(lowest(heights));
+console.log(isAnagram("listen", "silent")); // true
+console.log(isAnagram("Hello", "Olelh"));   // true
+console.log(isAnagram("test", "best"));     // false
